@@ -9,48 +9,28 @@ Fork it, run `/create-prd`, and Claude handles the rest: requirements gathering,
 ## How It Works
 
 ```mermaid
-flowchart TD
-    A([Fork template on GitHub]) --> B[Clone and open in Claude Code]
-    B --> C["run /create-prd"]
+flowchart LR
+    classDef cmd fill:#6366f1,stroke:#4338ca,color:#fff
+    classDef artifact fill:#f1f5f9,stroke:#94a3b8,color:#334155
+    classDef gate fill:#fef9c3,stroke:#ca8a04,color:#713f12
+    classDef terminal fill:#14532d,stroke:#14532d,color:#fff
 
-    subgraph PRD ["Step 1 — Setup"]
-        C --> C1["Q&A: problem, users, features, stack"]
-        C1 --> C2[Writes PRD + CLAUDE.md + memory files]
-    end
+    A(["🍴 Fork & Clone"]) --> B
 
-    C2 --> D["run /plan-feature"]
+    B["⚙️ /create-prd"]:::cmd --> C(["PRD · CLAUDE.md · memory files"]):::artifact
+    C --> D["📐 /plan-feature"]:::cmd
+    D --> E(["Phase plan files"]):::artifact
+    E --> F["▶ /execute"]:::cmd
 
-    subgraph PLAN ["Step 2 — Planning"]
-        D --> D1["Parallel subagents: structure · deps · risks"]
-        D1 --> D2["Phase plan files written to .agents/plans/"]
-    end
+    F --> G(["write test → implement → lint → commit"]):::artifact
+    G --> H{"more steps?"}:::gate
+    H -->|yes| G
+    H -->|no| I["🔍 /review"]:::cmd
 
-    D2 --> E["run /execute phase-N-plan.md"]
-
-    subgraph EXEC ["Step 3 — TDD Loop per Step"]
-        E --> E1[Write failing test]
-        E1 --> E2[Implement code]
-        E2 --> E3{Tests pass?}
-        E3 -->|"no — fix, max 3 attempts"| E2
-        E3 -->|yes| E4[Run lint and fix]
-        E4 --> E5[Commit]
-        E5 --> E6{More steps?}
-        E6 -->|yes| E1
-    end
-
-    E6 -->|no| F["run /review"]
-
-    subgraph REVIEW ["Step 4 — Review Gate"]
-        F --> F1[Run tests + lint]
-        F1 --> F2[Check PRD acceptance criteria]
-        F2 --> F3{Verdict}
-        F3 -->|BLOCKED| F4["Fix issues and re-run /review"]
-        F4 --> F1
-    end
-
-    F3 -->|APPROVED| G{More phases?}
-    G -->|yes| E
-    G -->|no| H([Ship it])
+    I --> J{"verdict"}:::gate
+    J -->|BLOCKED| F
+    J -->|"next phase"| F
+    J -->|"all done"| K(["🚀 Ship it"]):::terminal
 ```
 
 Each command is a markdown instruction file in `.claude/commands/`. Claude Code reads them as slash commands and follows them precisely.
