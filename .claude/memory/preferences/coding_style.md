@@ -12,7 +12,7 @@ type: user
 
 ## File Structure
 - One clear responsibility per file
-- Group by feature/domain, not by type
+- Group by feature/domain, not by type (e.g., `tasks/` contains models, routes, and tests for tasks — not `models/`, `routes/`, `tests/` as top-level folders)
 - Keep files under ~200 lines — if a file grows beyond that, it's doing too much
 
 ## Error Handling

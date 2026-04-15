@@ -5,7 +5,7 @@ type: user
 ---
 
 ## Framework
-[Filled by /init-project — e.g., pytest with pytest-asyncio for async tests]
+[Filled by /init-project — e.g., pytest for Python / Jest + supertest for Node.js / go test for Go]
 
 ## Test Command
 ```bash

@@ -18,4 +18,6 @@ type: user
 - [e.g., Keep responses concise — I can read diffs]
 
 ## Important Context
-[Any other info agents should know about this developer]
+[e.g., I work in 2-hour focused sessions — keep responses concise]
+[e.g., I'm new to async Python — explain async concepts when they come up]
+[e.g., This is a solo side project, not production code — pragmatism over perfection]

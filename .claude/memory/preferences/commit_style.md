@@ -33,6 +33,6 @@ remove <thing>
 ## Rules
 - Describe WHY, not what (the diff shows what; the message explains why)
 - Under 72 characters for the first line
-- Use imperative mood: "add feature" not "added feature"
+- Use imperative mood: "add feature" not "added feature" or "adds feature"
 - One logical change per commit — don't bundle unrelated changes
 - Never commit: secrets, .env files, generated build artifacts, commented-out code
