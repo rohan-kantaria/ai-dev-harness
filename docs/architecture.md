@@ -31,7 +31,7 @@ Run `/review` to validate the completed phase against the PRD and test coverage 
 
 Memory files persist across Claude sessions. They are NOT auto-loaded (keeps context clean). `/prime` reads the index (`MEMORY.md`) and loads relevant files on demand.
 
-```
+```text
 .claude/memory/
 ├── MEMORY.md                    # Index — one pointer per file
 ├── user_profile.md              # Developer background + preferences

@@ -4,14 +4,22 @@ __pycache__/
 *.egg-info/
 .venv/
 venv/
-dist/
 .env
+
+# Build artifacts
+dist/
+build/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
 
 # Node
 node_modules/
 .next/
 .nuxt/
-dist/
 
 # OS
 .DS_Store
@@ -25,3 +33,6 @@ Thumbs.db
 *.env
 .env.local
 .env.production
+
+# Local Claude Code config
+.claude/settings.local.json

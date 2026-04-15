@@ -1,5 +1,7 @@
 # CLAUDE.md — Project Context
 
+> **What is this file?** Claude Code reads `CLAUDE.md` automatically at the start of every session to understand the project. Keep it up to date.
+
 > This file is populated by running `/init-project` after forking this template.
 > Until then, this is a placeholder.
 
