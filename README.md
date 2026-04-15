@@ -106,7 +106,7 @@ your-repo/
 │   │   ├── commit.md
 │   │   ├── prime.md
 │   │   ├── help.md
-│   │   └── init-project.md          # Manual config escape hatch
+│   │   └── commands.md
 │   └── memory/                      # Persistent memory across sessions
 │       ├── MEMORY.md                # Memory index (loaded by /prime)
 │       ├── user_profile.md

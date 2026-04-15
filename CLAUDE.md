@@ -2,12 +2,12 @@
 
 > **What is this file?** Claude Code reads `CLAUDE.md` automatically at the start of every session to understand the project. Keep it up to date.
 
-> This file is populated by running `/init-project` after forking this template.
+> This file is populated by running `/create-prd` after forking this template.
 > Until then, this is a placeholder.
 
 ## Project
-- **Name:** [run /init-project to fill this in]
-- **Description:** [run /init-project to fill this in]
+- **Name:** [run /create-prd to fill this in]
+- **Description:** [run /create-prd to fill this in]
 
 ## Commands
 All available slash commands for this project:
@@ -15,25 +15,24 @@ All available slash commands for this project:
 | Command | What it does |
 |---|---|
 | `/commands` | List all commands with descriptions |
-| `/init-project` | One-time setup after forking — fills in this file |
 | `/prime` | Load project context into a fresh Claude session |
-| `/create-prd` | Generate a PRD through structured Q&A |
-| `/plan-feature [name]` | Analyze codebase → create phase implementation plan |
+| `/create-prd` | Define requirements + configure project in one shot |
+| `/plan-feature [name]` | Generate implementation plans from PRD |
 | `/execute [plan-path]` | Run TDD cycle for each step in a plan |
 | `/test` | Run tests, fix failures, re-run |
 | `/commit` | Create semantic git commit |
 | `/review` | Review completed phase before advancing |
 
 ## Tech Stack
-- **Language:** [run /init-project]
-- **Framework:** [run /init-project]
-- **Database:** [run /init-project]
-- **Test command:** [run /init-project] (e.g., `pytest`, `npm test`)
-- **Lint command:** [run /init-project] (e.g., `ruff check . --fix`, `npm run lint`)
+- **Language:** [run /create-prd]
+- **Framework:** [run /create-prd]
+- **Database:** [run /create-prd]
+- **Test command:** [run /create-prd] (e.g., `pytest`, `npm test`)
+- **Lint command:** [run /create-prd] (e.g., `ruff check . --fix`, `npm run lint`)
 
 ## Code Style
-- **Naming:** [run /init-project]
-- **File structure:** [run /init-project]
+- **Naming:** [run /create-prd]
+- **File structure:** [run /create-prd]
 
 ## Key Directories
 - `.claude/commands/` — slash command definitions

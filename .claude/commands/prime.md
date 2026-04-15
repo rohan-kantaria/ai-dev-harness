@@ -6,7 +6,7 @@ Read the CLAUDE.md file at the project root. Extract:
 - Tech stack (language, framework, database, test command, lint command)
 - List of available commands
 
-If the project name field still contains placeholder text (e.g., "[run /init-project to fill this in]"), stop immediately and output: "⚠️ CLAUDE.md has not been initialized yet. Run /init-project first, then /prime."
+If the project name field still contains placeholder text (e.g., "[run /create-prd to fill this in]"), stop immediately and output: "⚠️ CLAUDE.md has not been configured yet. Run /create-prd first, then /prime."
 
 **Step 2 — Read memory index**
 Read `.claude/memory/MEMORY.md`. Note which memory files exist and their purpose. Do NOT read the individual memory files yet — load them on demand when relevant to a task.

@@ -29,7 +29,7 @@ This file is the index. Load specific memory files only when relevant — do not
 | `user_profile.md` | Developer (manually) | When your preferences or background change |
 | `project_decisions.md` | Agent during `/execute` | When a significant technical decision is made |
 | `feedback_corrections.md` | Developer (manually) | After each session ends |
-| `preferences/*.md` | `/init-project`, then developer | On fork setup, then as preferences evolve |
+| `preferences/*.md` | `/create-prd`, then developer | On fork setup, then as preferences evolve |
 
 ## Memory Types
 

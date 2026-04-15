@@ -5,7 +5,7 @@ type: user
 ---
 
 ## Framework
-[Filled by /init-project — e.g., pytest for Python / Jest + supertest for Node.js / go test for Go]
+[Filled by /create-prd — e.g., pytest for Python / Jest + supertest for Node.js / go test for Go]
 
 ## Test Command
 ```bash
@@ -34,4 +34,4 @@ type: user
 - Third-party library behavior
 
 ## Fixture Patterns
-[Filled by /init-project — e.g., use pytest fixtures for database setup/teardown, not global state]
+[Filled by /create-prd — e.g., use pytest fixtures for database setup/teardown, not global state]

@@ -15,7 +15,6 @@ Include these commands:
 | `/test` | Runs the test suite, reports failures, attempts fixes, re-runs | For spot-checking outside of /execute |
 | `/commit` | Creates a semantic git commit following the project's commit style | After any change you want to save that /execute didn't handle |
 | `/review` | Reviews a completed phase: tests, lint, PRD alignment, structured pass/fail report | After /execute finishes a phase, before advancing to the next |
-| `/init-project` | Manual project setup without a PRD (fills CLAUDE.md and memory files) | Only if you need to configure the harness without running /create-prd |
 
 After the table, add:
 > **Tip:** The normal flow is `/create-prd` → `/plan-feature` → `/execute` → `/review`. Start every session with `/prime`.

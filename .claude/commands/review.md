@@ -11,7 +11,7 @@ Read `CLAUDE.md` for the test command. Run it.
 Record: pass count, fail count.
 
 **Step 2 — Run lint**
-Using the same CLAUDE.md already read in Step 1, extract the lint command. If the lint command is "none", not set, or still contains placeholder text (e.g., contains `[` or `run /init-project`): skip this step and record "⏭️ Skipped (not configured)".
+Using the same CLAUDE.md already read in Step 1, extract the lint command. If the lint command is "none", not set, or still contains placeholder text (e.g., contains `[` or `run /create-prd`): skip this step and record "⏭️ Skipped (not configured)".
 Run lint. Record: clean or N errors.
 
 **Step 3 — PRD alignment**

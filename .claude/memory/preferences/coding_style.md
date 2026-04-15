@@ -5,7 +5,7 @@ type: user
 ---
 
 ## Naming
-- **Variables/functions:** [filled by /init-project — e.g., snake_case]
+- **Variables/functions:** [filled by /create-prd — e.g., snake_case]
 - **Classes:** [e.g., PascalCase]
 - **Files:** [e.g., snake_case.py]
 - **Constants:** [e.g., UPPER_SNAKE_CASE]

@@ -5,7 +5,7 @@ type: user
 ---
 
 ## Role
-[e.g., Backend Python developer with 3 years experience — filled by /init-project]
+[e.g., Backend Python developer with 3 years experience — filled by /create-prd]
 
 ## Technical Background
 - **Strong:** [languages/frameworks the developer knows well]

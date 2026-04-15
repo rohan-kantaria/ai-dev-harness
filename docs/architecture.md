@@ -45,5 +45,5 @@ Memory files persist across Claude sessions. They are NOT auto-loaded (keeps con
 
 ## Reuse
 
-This repo is a GitHub template. Fork it → run `/init-project` → start building.
-The harness is app-agnostic. It adapts to any language/framework via `/init-project`.
+This repo is a GitHub template. Fork it → run `/create-prd` → start building.
+The harness is app-agnostic. It adapts to any language/framework via `/create-prd`.

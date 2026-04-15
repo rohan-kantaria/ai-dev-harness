@@ -5,7 +5,7 @@ type: user
 ---
 
 ## Format
-[Filled by /init-project — conventional or simple]
+[Filled by /create-prd — conventional or simple]
 
 ## Conventional Format (if chosen)
 ```
