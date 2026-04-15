@@ -8,11 +8,49 @@ Fork it, run `/create-prd`, and Claude handles the rest: requirements gathering,
 
 ## How It Works
 
-```
-/create-prd     →   Structured Q&A → PRD + project config written automatically
-/plan-feature   →   Parallel subagents analyze codebase → phase plans generated
-/execute        →   TDD per step: write test → implement → lint → commit
-/review         →   Tests + lint + PRD alignment → APPROVED or BLOCKED verdict
+```mermaid
+flowchart TD
+    A([Fork template on GitHub]) --> B[Clone & open in Claude Code]
+    B --> C[/create-prd]
+
+    subgraph PRD ["/create-prd — Setup"]
+        C --> C1[Q&A: problem, users, features, stack]
+        C1 --> C2[Writes PRD + CLAUDE.md + memory files]
+    end
+
+    C2 --> D[/plan-feature]
+
+    subgraph PLAN ["/plan-feature — Planning"]
+        D --> D1[Parallel subagents: structure · deps · risks]
+        D1 --> D2[Phase plan files written to .agents/plans/]
+    end
+
+    D2 --> E[/execute phase-N plan]
+
+    subgraph EXEC ["/execute — TDD Loop per Step"]
+        E --> E1[Write failing test]
+        E1 --> E2[Implement code]
+        E2 --> E3{Tests pass?}
+        E3 -->|no — fix, max 3 attempts| E2
+        E3 -->|yes| E4[Run lint & fix]
+        E4 --> E5[Commit]
+        E5 --> E6{More steps?}
+        E6 -->|yes| E1
+    end
+
+    E6 -->|no| F[/review]
+
+    subgraph REVIEW ["/review — Gate"]
+        F --> F1[Run tests + lint]
+        F1 --> F2[Check PRD acceptance criteria]
+        F2 --> F3{Verdict}
+        F3 -->|BLOCKED| F4[Fix issues → re-run /review]
+        F4 --> F1
+    end
+
+    F3 -->|APPROVED| G{More phases?}
+    G -->|yes| E
+    G -->|no| H([Ship it])
 ```
 
 Each command is a markdown instruction file in `.claude/commands/`. Claude Code reads them as slash commands and follows them precisely.
