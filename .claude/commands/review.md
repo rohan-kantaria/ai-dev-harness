@@ -11,11 +11,11 @@ Read `CLAUDE.md` for the test command. Run it.
 Record: pass count, fail count.
 
 **Step 2 — Run lint**
-Read `CLAUDE.md` for the lint command. If lint command is "none" or not set: skip this step.
+Using the same CLAUDE.md already read in Step 1, extract the lint command. If the lint command is "none", not set, or still contains placeholder text (e.g., contains `[` or `run /init-project`): skip this step and record "⏭️ Skipped (not configured)".
 Run lint. Record: clean or N errors.
 
 **Step 3 — PRD alignment**
-Read `.claude/PRD.md`. Find the acceptance criteria for the phase being reviewed.
+Read `.claude/PRD.md`. To find the acceptance criteria for this phase: use the plan filename (e.g., `phase-2-auth.md`) to identify the phase number and feature name, then search the PRD for a section with a matching phase number or feature name. If no exact match is found, include all PRD acceptance criteria and flag which ones could not be matched to this specific phase.
 
 For each acceptance criterion, check:
 - Is there code that implements it?
@@ -39,6 +39,25 @@ Review files changed in this phase. Flag if any of these are present:
 - Missing input validation at user-facing entry points (API routes, CLI args, form inputs)
 - Functions longer than ~30 lines (likely doing too much)
 - Obvious security issues (string concatenation in SQL queries, unsanitized user input in responses)
+
+**Verdict threshold — apply these rules strictly:**
+
+APPROVED if ALL of the following are true:
+- All tests pass (Step 1)
+- Lint is clean OR was skipped because not configured (Step 2)
+- No ❌ missing acceptance criteria (Step 3)
+- No Critical code issues from Step 5
+
+BLOCKED if ANY of the following are true:
+- Any tests failing
+- Lint has errors (and lint is configured)
+- Any ❌ missing acceptance criterion (code or test absent)
+- Any ⚠️ partial criterion where the missing piece is a test (code exists but no test = BLOCKED)
+- Any ⚠️ partial criterion where the missing piece is code (test exists but no implementation = BLOCKED)
+- Any security issue found in Step 5 (SQL injection, unsanitized user input)
+- Any function over 30 lines found in Step 5
+
+Note: A ⚠️ partial where only a minor edge-case test is missing (happy path and at least one failure case exist) can be APPROVED with a note. All other ⚠️ cases are BLOCKED.
 
 **Step 6 — Output structured report**
 

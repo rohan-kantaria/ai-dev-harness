@@ -16,11 +16,12 @@ Run the test command (or scoped to $ARGUMENTS if provided).
 For each failing test:
 - Read the test code to understand what behavior is expected
 - Read the implementation file being tested
-- Determine if the failure is a bug in the implementation or a genuine bug in the test itself
+- Determine if the failure is a bug in the implementation or a genuine bug in the test itself.
+  A test has a genuine bug ONLY if: (a) the expected value is factually wrong (e.g., `assert 2 + 2 == 5`), (b) the test calls a function with the wrong signature that was never specified, or (c) the test imports a module that does not and never should exist. In all other cases, treat the test as correct and fix the implementation.
 - If implementation bug: fix ONLY the implementation code
 - If the test itself has a genuine bug (not just failing — actually wrong): report it and ask the developer before changing
 
-Re-run the full test suite after each fix attempt. Repeat up to 3 total attempts.
+Re-run the full test suite after each round of fixes. Count each full suite run as one attempt — fix all failing tests you can in one round, then run the suite. Repeat up to 3 total full-suite runs (not 3 per test).
 
 **Step 5 — Report if still failing**
 If tests still failing after 3 attempts:

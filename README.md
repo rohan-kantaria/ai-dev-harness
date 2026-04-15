@@ -3,7 +3,7 @@
 A reusable Claude Code template that automates the full development lifecycle:
 **PRD → Phase Plans → TDD Implementation → Review → Commit**
 
-Built as a capstone project for the Slalom Software Engineering with AI bootcamp. Demonstrates: AI agents, persistent memory, slash commands, context engineering, and Test-Driven Development.
+Built as a capstone project for the Slalom Software Engineering with AI bootcamp. Demonstrates: AI agents, persistent memory, slash commands, context engineering, MCP servers, and Test-Driven Development.
 
 ## What's Inside
 
@@ -120,7 +120,7 @@ The command halts and asks for help if:
 | 2–3 min | Run `/prime` — watch context load from memory files |
 | 3–5 min | Run `/create-prd` — live Q&A generates a PRD |
 | 5–7 min | Run `/plan-feature phase-1-[name]` — subagents analyze, plan written |
-| 7–9 min | Run `/execute phase-1` — TDD cycle: test written → implemented → passes → committed |
+| 7–9 min | Run `/execute .agents/plans/phase-1-[name].md` — TDD cycle: test written → implemented → passes → committed |
 | 9–10 min | Run `/review` — structured pass/fail report against PRD |
 
 ## GitHub Template Setup
