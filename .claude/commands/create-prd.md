@@ -11,7 +11,7 @@ Check if any non-markdown, non-config source files exist in the project (e.g., .
 
 3. "What are the 3-5 core features of the MVP? List them briefly — I'll ask follow-up questions about each."
 
-4. For each feature the user listed, ask: "For [feature name]: What's the simplest version of this that would still be useful? What does success look like?"
+4. For each feature the user listed in Q3: if they did NOT already describe the simplest version or success criteria for that feature, ask: "For [feature name]: What's the simplest version of this that would still be useful? What does success look like?" — Skip this question for any feature where Q3 already provided this detail.
 
 5. "What is explicitly OUT of scope for this first version? What are you deliberately not building yet?"
 

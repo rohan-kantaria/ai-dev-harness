@@ -2,6 +2,8 @@ Create a detailed implementation plan for a feature or phase.
 
 The feature/phase name is in $ARGUMENTS (e.g., `/plan-feature phase-1-data-models`).
 
+If $ARGUMENTS is empty or not provided: output "Usage: /plan-feature <feature-name>  Example: /plan-feature phase-1-data-models" and stop.
+
 **Step 1 — Load context**
 Read these files before doing anything:
 - `CLAUDE.md` — tech stack, test command, lint command, naming conventions
@@ -20,9 +22,13 @@ Count files in `.agents/plans/` that are NOT `.gitkeep`. The new plan is `phase-
 
 **Step 4 — Write the implementation plan**
 
+After synthesizing all three subagents' findings, incorporate Subagent C's risks as follows:
+- Add a `## Known Risks` section to the plan between the header block and Step 1
+- For each risk that implies a specific guard (e.g., input validation, SQL injection, auth check), add a corresponding checklist item to the relevant implementation step
+
 Write `.agents/plans/phase-[N]-[feature-name].md` with this structure:
 
-```markdown
+~~~~markdown
 # Phase [N]: [Feature Name] — Implementation Plan
 
 > **To implement:** Run `/execute .agents/plans/[this-filename]` to implement this plan step-by-step.
@@ -30,6 +36,11 @@ Write `.agents/plans/phase-[N]-[feature-name].md` with this structure:
 **Goal:** [one sentence describing what this phase delivers]
 **Depends on:** [previous phases or "none — this is the first phase"]
 **Total steps:** [count]
+
+---
+
+## Known Risks
+[List risks identified by Subagent C, with mitigations noted inline]
 
 ---
 
@@ -88,7 +99,7 @@ git commit -m "[type]: [description]"
 [Copy the acceptance criteria from PRD.md for this feature]
 - [ ] [criterion 1]
 - [ ] [criterion 2]
-```
+~~~~
 
 **Important rules when writing the plan:**
 - Every step must contain ACTUAL CODE — no "implement the function here" placeholders

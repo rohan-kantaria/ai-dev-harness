@@ -2,6 +2,8 @@ Execute an implementation plan step-by-step using Test-Driven Development.
 
 The plan file path is in $ARGUMENTS (e.g., `/execute .agents/plans/phase-1-setup.md`).
 
+If $ARGUMENTS is empty or not provided: output "Usage: /execute <path-to-plan-file>" then list all files in `.agents/plans/` (excluding .gitkeep) as options. Stop.
+
 **Before starting:**
 1. Read the plan file at the given path. If the file does not exist, output: "❌ Plan file not found: [path]. Check .agents/plans/ for available plans." and stop.
 2. Read `CLAUDE.md` — extract: test command, lint command
@@ -13,13 +15,19 @@ If all steps are already checked (`- [x]`): output "✅ All steps complete. Run 
 
 ---
 
-**For each incomplete step, determine its type and follow the matching procedure:**
+**For each incomplete step, classify its type by the step label text, then follow the matching procedure:**
+
+- If the step label contains "Write the failing test", "Write test", or "test" → **WRITE TESTS** procedure
+- If the step label contains "Implement" → **IMPLEMENT** procedure  
+- If the step label contains "Run lint", "lint", or "Lint" → **RUN LINT** procedure
+- If the step label contains "Commit" → **COMMIT** procedure
+- Otherwise → **OTHER** procedure
 
 ### WRITE TESTS step
-1. Write the test code exactly as shown in the plan
+1. Create or open the test file specified in the plan's Files section, then write the test code exactly as shown in the plan
 2. Run: `[test command] [specific test file]::[test name] -v`
 3. The test MUST fail at this point
-   - If it passes unexpectedly: the feature may already exist. Report: "⚠️ Test passed before implementing. Feature may already exist. Proceeding anyway — verifying test covers the right behavior."
+   - If it passes unexpectedly: PAUSE. Check if the function/feature under test already exists in the codebase. If yes: output "⚠️ [function name] already exists — this step may be redundant. Please review and confirm whether to skip this step or update the plan." and wait for the developer's response. If no: output "⚠️ Test passed before implementing but the implementation doesn't exist — the test may not be testing the right thing. Please review the test before proceeding." and wait. Do NOT auto-advance.
    - If it fails with the expected error: good — continue
 4. Check the checkbox in the plan file for this step: change `- [ ]` to `- [x]`
 
