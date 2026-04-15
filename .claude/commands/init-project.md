@@ -57,13 +57,20 @@ After collecting all answers, perform these writes:
 
 **Write 2: Overwrite `.claude/memory/user_profile.md`**
 
-Fill in the user_profile.md template with the project name, tech stack, and developer preferences gathered from the Q&A. Keep the frontmatter fields (name, description, type: user) intact.
+Fill ONLY these two sections using the Q&A answers, keep all other sections as their template placeholders:
+- **Role:** derive from tech stack answer (e.g., "Python / FastAPI developer")
+- **Technical Background → Strong:** list the tech stack components named
+
+Leave "How I Like to Collaborate" and "Important Context" as their existing template placeholders — the developer fills these manually after setup. Keep the frontmatter fields (name, description, type: user) intact.
 
 **Write 3: Overwrite `.claude/memory/preferences/testing_style.md`**
 
 Fill in the test framework section based on the test command provided:
 - If `pytest` → note: use pytest fixtures, `tests/test_*.py` naming, run with `pytest tests/ -v --tb=short`
-- If `npm test` or Jest → note: describe/it blocks, `__tests__/` directory, run with `npm test`
+- If the command contains `jest` → note: Jest describe/it blocks, `__tests__/` or `*.test.js` files, run with the provided command
+- If the command contains `vitest` → note: Vitest describe/it blocks, similar to Jest API, run with the provided command
+- If the command is `npm test` without a specific runner named → ask: "Which test runner does `npm test` invoke? (Jest / Vitest / Mocha)" before writing conventions
+- If the command contains `mocha` → note: Mocha describe/it blocks, `test/` directory
 - If `go test` → note: `_test.go` suffix, table-driven tests, run with `go test ./... -v`
 - Otherwise → adapt based on the command provided
 

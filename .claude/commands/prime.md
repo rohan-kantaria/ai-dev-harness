@@ -6,6 +6,8 @@ Read the CLAUDE.md file at the project root. Extract:
 - Tech stack (language, framework, database, test command, lint command)
 - List of available commands
 
+If the project name field still contains placeholder text (e.g., "[run /init-project to fill this in]"), stop immediately and output: "⚠️ CLAUDE.md has not been initialized yet. Run /init-project first, then /prime."
+
 **Step 2 — Read memory index**
 Read `.claude/memory/MEMORY.md`. Note which memory files exist and their purpose. Do NOT read the individual memory files yet — load them on demand when relevant to a task.
 
@@ -15,7 +17,7 @@ Check if `.claude/PRD.md` exists.
 - If no: note "PRD not yet created — run /create-prd to start"
 
 **Step 4 — Check for active plan**
-List files in `.agents/plans/`. Find the most recently modified file that is NOT `.gitkeep`.
+Check if `.agents/plans/` exists. If the directory does not exist, note "No active plan — run /plan-feature [name]" and skip the rest of Step 4. If it exists, list its files. Find the most recently modified file that is NOT `.gitkeep`.
 - If found: read it and extract: phase name, number of completed steps (checked checkboxes `- [x]`), total steps, and the description of the FIRST unchecked step (`- [ ]`)
 - If none: note "No active plan — run /plan-feature [feature] to create one"
 
@@ -32,7 +34,7 @@ Format your output exactly like this:
 **Test command:** `[test command]`
 **Lint command:** `[lint command]`
 
-**PRD:** [✅ Exists — MVP covers: bullet 1; bullet 2; bullet 3] OR [❌ Not yet created — run /create-prd]
+**PRD:** [✅ Exists — MVP: bullet 1, bullet 2, bullet 3] OR [❌ Not yet created — run /create-prd]
 
 **Active Plan:** [✅ phase-N-[name]: N/M steps done — Next: "[first unchecked step description]"] OR [❌ No active plan — run /plan-feature [name]]
 

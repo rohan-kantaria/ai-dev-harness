@@ -1,3 +1,4 @@
+<!-- Maintainer: if you add a new command to .claude/commands/, add a row to the table below too -->
 Display a formatted reference of all available slash commands for this project.
 
 Output a markdown table with three columns: **Command**, **What it does**, **When to use it**
