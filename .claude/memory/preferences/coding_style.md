@@ -4,6 +4,23 @@ description: Naming conventions, file structure, and code patterns for this proj
 type: user
 ---
 
+## Environment
+
+- **Always use a virtual environment — never install dependencies globally**
+  - Python: use `venv` (`python -m venv .venv`) or `pipenv`
+  - Node.js: dependencies are local by default via `package.json` — never use `-g` flags
+  - Ruby: use `bundler`
+  - Go: go modules are local by default
+- **Always add the virtual env directory to `.gitignore`** (`.venv/`, `node_modules/`, etc.)
+- **Always pin dependency versions** in the lock file (`requirements.txt`, `Pipfile.lock`, `package-lock.json`)
+
+## Security
+
+- **Never commit secrets** — API keys, passwords, tokens, connection strings
+- **Always use a `.env` file** for secrets and add it to `.gitignore` immediately when the project is created
+- **Always provide a `.env.example`** with placeholder values so others know what keys are needed
+- **Before every commit:** scan staged files for hardcoded secrets (look for patterns like `sk-`, `Bearer `, `password =`, `api_key =`)
+
 ## Naming
 - **Variables/functions:** [filled by /create-prd — e.g., snake_case]
 - **Classes:** [e.g., PascalCase]

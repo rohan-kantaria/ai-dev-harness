@@ -65,12 +65,25 @@ If all steps are already checked (`- [x]`): output "✅ All steps complete. Run 
 
 ### COMMIT step
 1. Read `.claude/memory/preferences/commit_style.md`
-2. Stage the files listed in the plan step: `git add [files]`
-3. Commit with the message from the plan (or generate one following the project's commit style if the plan says "generate"):
+2. **Security scan — run before staging anything:**
+   - Check staged and modified files for hardcoded secrets: API keys, tokens, passwords, connection strings
+   - Look for patterns like: `sk-`, `Bearer `, `api_key =`, `password =`, `secret =`, `token =`, `GROQ_API_KEY`, `DATABASE_URL` with a value assigned
+   - Check that `.env` is listed in `.gitignore` — if not, add it before proceeding
+   - If any secret is found: HALT. Output:
+     ```
+     🚨 Secret detected before commit — not staging.
+
+     Found: [what was found, in which file]
+
+     Fix: move the value to .env and reference it via os.environ or python-dotenv.
+     Do not proceed until this is resolved.
+     ```
+3. Stage the files listed in the plan step: `git add [files]`
+4. Commit with the message from the plan (or generate one following the project's commit style if the plan says "generate"):
    - conventional: `git commit -m "feat: [description]"`
    - simple: `git commit -m "add [description]"`
-4. Verify: `git log --oneline -1`
-5. Check the checkbox
+5. Verify: `git log --oneline -1`
+6. Check the checkbox
 
 ### OTHER step (setup, directory creation, etc.)
 1. Execute the action described in the step

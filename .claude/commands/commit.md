@@ -23,20 +23,33 @@ Rules:
 - Use imperative mood: "add auth middleware" not "added auth middleware" or "adds auth middleware"
 - Subject line describes WHY, not WHAT — the diff already shows what changed
 
-**Step 5 — Stage files**
-First check what is already staged (`git diff --staged`). Only stage files that are not already staged and belong to the same logical change:
+**Step 5 — Security scan**
+Before staging anything, scan all modified and untracked files for secrets:
+- Patterns to flag: `sk-`, `Bearer `, `api_key =`, `password =`, `secret =`, `token =`, any environment variable with a real value assigned inline
+- Check that `.env` is in `.gitignore` — if not, add it now
+- If a secret is found: HALT. Output:
+  ```
+  🚨 Secret detected — not staging.
+
+  Found: [what, in which file, on which line]
+
+  Fix: move the value to .env and load it via os.environ or python-dotenv.
+  ```
+
+**Step 6 — Stage files**
+Only stage files that belong to the same logical change:
 ```bash
-git add [specific unstaged files]
+git add [specific files]
 ```
-Do NOT stage: .env files, secrets, unrelated changes, or binary build artifacts.
+Do NOT stage: `.env` files, secrets, unrelated changes, or binary build artifacts.
 
 If there are untracked files that look relevant, list them and ask the developer before staging.
 
-**Step 6 — Commit**
+**Step 7 — Commit**
 ```bash
 git commit -m "[message]"
 ```
 
-**Step 7 — Verify**
+**Step 8 — Verify**
 Run `git log --oneline -1`.
 Output: `✅ Committed: [hash] — [message]`
