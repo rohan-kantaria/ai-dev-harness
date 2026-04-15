@@ -121,7 +121,7 @@ Overwrite the root `CLAUDE.md` with project-specific values:
 | `/commit [message]` | Stage and commit with conventional message |
 | `/review [plan-file]` | Review implementation against plan + PRD |
 | `/prime` | Load project context at session start |
-| `/help` | Show command reference |
+| `/commands` | Show command reference |
 
 ## Tech Stack
 - **Language:** [confirmed language + version]

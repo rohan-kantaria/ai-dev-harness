@@ -14,7 +14,7 @@ All available slash commands for this project:
 
 | Command | What it does |
 |---|---|
-| `/help` | List all commands with descriptions |
+| `/commands` | List all commands with descriptions |
 | `/init-project` | One-time setup after forking — fills in this file |
 | `/prime` | Load project context into a fresh Claude session |
 | `/create-prd` | Generate a PRD through structured Q&A |

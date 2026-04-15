@@ -133,7 +133,7 @@ your-repo/
 | `/test [path]` | Run tests, triage failures, attempt fixes |
 | `/commit [message]` | Semantic commit following the project's configured style |
 | `/prime` | Load project context into a fresh Claude session |
-| `/help` | Full command reference with usage notes |
+| `/commands` | Full command reference with usage notes |
 
 ---
 

@@ -7,7 +7,7 @@ Include these commands:
 
 | Command | What it does | When to use it |
 |---|---|---|
-| `/help` | Show this command reference | Whenever you forget a command or want an overview |
+| `/commands` | Show this command reference | Whenever you forget a command or want an overview |
 | `/prime` | Load project context (CLAUDE.md, memory, PRD, latest plan) into a fresh session | At the start of every new Claude session |
 | `/create-prd` | Interview mode — defines requirements AND configures CLAUDE.md + memory files | First thing after forking — replaces manual setup |
 | `/plan-feature [name]` | No args: plans all PRD phases. With name: plans one specific phase | After the PRD is approved |

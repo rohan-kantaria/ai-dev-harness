@@ -26,7 +26,7 @@ After collecting all answers, perform these writes:
 
 | Command | What it does |
 |---|---|
-| `/help` | List all commands |
+| `/commands` | List all commands |
 | `/init-project` | One-time setup after forking |
 | `/prime` | Load project context into a fresh session |
 | `/create-prd` | Generate PRD through structured Q&A |
