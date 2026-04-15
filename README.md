@@ -9,26 +9,26 @@ Fork it, run `/create-prd`, and Claude handles the rest: requirements gathering,
 ## How It Works
 
 ```mermaid
-flowchart LR
+flowchart TD
     classDef cmd fill:#6366f1,stroke:#4338ca,color:#fff
     classDef artifact fill:#f1f5f9,stroke:#94a3b8,color:#334155
     classDef gate fill:#fef9c3,stroke:#ca8a04,color:#713f12
     classDef terminal fill:#14532d,stroke:#14532d,color:#fff
 
-    A(["🍴 Fork & Clone"]) --> B
+    A(["🍴 Fork & Clone"]) --> B["⚙️ /create-prd"]:::cmd
+    B --> C(["PRD · CLAUDE.md · memory files written"]):::artifact
 
-    B["⚙️ /create-prd"]:::cmd --> C(["PRD · CLAUDE.md · memory files"]):::artifact
     C --> D["📐 /plan-feature"]:::cmd
-    D --> E(["Phase plan files"]):::artifact
-    E --> F["▶ /execute"]:::cmd
+    D --> E(["Phase plan files generated"]):::artifact
 
+    E --> F["▶ /execute"]:::cmd
     F --> G(["write test → implement → lint → commit"]):::artifact
     G --> H{"more steps?"}:::gate
     H -->|yes| G
     H -->|no| I["🔍 /review"]:::cmd
 
     I --> J{"verdict"}:::gate
-    J -->|BLOCKED| F
+    J -->|BLOCKED - fix & retry| F
     J -->|"next phase"| F
     J -->|"all done"| K(["🚀 Ship it"]):::terminal
 ```
